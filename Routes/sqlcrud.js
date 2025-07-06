@@ -11,7 +11,7 @@ routeer.get("/showAll", async (req, res) => {
     /* result >> Will Store The Result Of The query, Which Includes Metadata And A Rows Array. */
     /* pool.query(...) >> Executes An SQL Command Using A PostgreSQL Connection pool. */
     /* "SELECT * FROM pets" >> SQL Statement To Fetch All Rows From The Pets Table. */
-    const result = await pool.query("SELECT * FROM pets");
+    const result = await pool.query("SELECT * FROM pets_demo");
     /* res.json(...) >> Sends A JSON Response Back To The Client. */
     /* result.rows >> This Contains All The Rows Fetched From The Pets Table, As An Array Of Objects. */
     res.json(result.rows);
@@ -34,7 +34,7 @@ routeer.post("/add", async (req, res) => {
       /* VALUES ($1, $2, $3, $4) >> Uses Parameterized Placeholders To Prevent SQL Injection. */
       /* RETURNING * >> After Inserting, This Tells PostgreSQL To Return The Newly Added Row */
       /* [name, type, age, owned] >> The Array Provides Values For The Placeholders. */
-      "INSERT INTO pets (name, type, age, owned) VALUES ($1, $2, $3, $4) RETURNING *",
+      "INSERT INTO pets_demo (name, type, age, owned) VALUES ($1, $2, $3, $4) RETURNING *",
       [name, type, age, owned]
     );
     /* res.status(201) >> Sends An HTTP 201 Status Code, Meaning “Created”. */
